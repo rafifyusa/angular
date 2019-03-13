@@ -8,11 +8,15 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
+
 export class ProductComponent implements OnInit {
 
   messageForm: FormGroup;
   submitted = false;
   success = false;
+  kmb: any;
+  param: any;
+  hsl: any;
   id = '';
   form = { name: '', price: 0 };
   constructor(private formBuilder: FormBuilder, private data: DataService, private route: ActivatedRoute) { }
@@ -23,12 +27,14 @@ export class ProductComponent implements OnInit {
       name: ['', Validators.required],
       price: ['', Validators.required]
     });
-    if (this.route.params.value.id != null) {
-      this.id = this.route.params.value.id
-      const thisD = this
+    this.param = this.route.params;
+    if (this.param.value.id != null) {
+      this.id = this.param.value.id;
+      const thisD = this;
       this.data.findById(this.id).subscribe(data => {
-        thisD.form.name = data.name
-        thisD.form.price = data.price;
+        this.kmb = data;
+        thisD.form.name = this.kmb.name;
+        thisD.form.price = this.kmb.price;
       });
     }
 
@@ -36,7 +42,7 @@ export class ProductComponent implements OnInit {
 
   onSubmit() {
     if (this.messageForm.invalid) {
-      console.log('invalid')
+      console.log('invalid');
       return;
     }
     console.log(this.form);
@@ -44,15 +50,16 @@ export class ProductComponent implements OnInit {
     if (this.id !== '') {
       this.data.updateProductFromDB({name: this.messageForm.controls.name.value, price: this.messageForm.controls.price.value}, this.id)
         .subscribe(datas => {
-          console.log(datas);
-          alert(datas.message);
+          this.hsl = datas;
+          alert(this.hsl.message);
           location.href = '/';
         });
     } else {
       this.data.insertProductIntoDB({name: this.messageForm.controls.name.value, price: this.messageForm.controls.price.value})
         .subscribe(datas => {
+          this.hsl = datas;
           console.log(datas);
-          alert(datas.message);
+          alert(this.hsl.message);
           location.href = '/';
         });
     }
