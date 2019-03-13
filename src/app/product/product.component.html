@@ -5,10 +5,10 @@
     <h5 *ngIf="!messageForm.invalid">Your form is valid!</h5>
 
     <label>
-      Product:
-      <input type="text" formControlName="product">
-      <div *ngIf="submitted && messageForm.controls.product.errors" class="error">
-        <div *ngIf="messageForm.controls.product.errors.required">Please insert product name!</div>
+      Product Name:
+      <input type="text" formControlName="name">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Please insert product name!</div>
       </div>
     </label>
   
@@ -26,7 +26,7 @@
 
   <div *ngIf="submitted" class="results">
     <strong>Name:</strong> 
-    <span>{{ messageForm.controls.product.value }}</span>
+    <span>{{ messageForm.controls.name.value }}</span>
 
     <strong>Message:</strong> 
     <span>{{ messageForm.controls.price.value }}</span>

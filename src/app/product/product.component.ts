@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.messageForm = this.formBuilder.group({
-      product:['', Validators.required],
+      name:['', Validators.required],
       price: ['', Validators.required]
     });
   }
