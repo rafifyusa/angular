@@ -12,7 +12,7 @@ export class DataService {
     return console.log('clicked');
   }
 
-  getUsers(){
-    return this.http.get('https://reqres.in/api/users')
+  getProducts(){
+    return this.http.get('http://localhost:8282/products/all')
   }
 }

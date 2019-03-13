@@ -9,14 +9,14 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
 
   h1Style: boolean = false;
-  users: Object;
+  products: Object;
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.getUsers().subscribe(data => {
-      this.users = data
-      console.log(this.users);
+    this.data.getProducts().subscribe(data => {
+      this.products = data
+      console.log(this.products);
     }
   );
   }
