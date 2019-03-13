@@ -15,20 +15,20 @@ export class ContactComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.messageForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      message: ['', Validators.required]
-    });
+    // this.messageForm = this.formBuilder.group({
+    //   name: ['', Validators.required],
+    //   message: ['', Validators.required]
+    // });
   }
 
   onSubmit() {
-    this.submitted = true;
-
-    if (this.messageForm.invalid) {
-        return;
-    }
-
-    this.success = true;
+    // this.submitted = true;
+    //
+    // if (this.messageForm.invalid) {
+    //     return;
+    // }
+    //
+    // this.success = true;
 }
 
 }

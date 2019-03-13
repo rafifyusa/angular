@@ -15,8 +15,6 @@
 
 <ul *ngIf="products">
   <li *ngFor="let product of products">
-    <!-- <img [src]="user.avatar"> -->
-    <!-- <p>{{ user.first_name }} {{ user.last_name }}</p> -->
-    <p>{{ product.name }}  {{ product.price }}</p>
+    <p>{{ product.name }}  {{ product.price }} <a href="/product/{{product._id}}">update</a></p>
   </li>
 </ul>

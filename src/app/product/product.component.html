@@ -6,15 +6,15 @@
 
     <label>
       Product Name:
-      <input type="text" formControlName="name">
+      <input type="text" formControlName="name" [(ngModel)]="form.name">
       <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
         <div *ngIf="messageForm.controls.name.errors.required">Please insert product name!</div>
       </div>
     </label>
-  
+
     <label>
       Price:
-      <input type="number" formControlName="price">
+      <input type="number" formControlName="price" [(ngModel)]="form.price">
       <div *ngIf="submitted && messageForm.controls.price.errors" class="error">
         <div *ngIf="messageForm.controls.price.errors.required">Please insert the product price!</div>
       </div>
@@ -23,11 +23,3 @@
     <input type="submit" value="Send message" class="cta">
   
   </form>
-
-  <div *ngIf="submitted" class="results">
-    <strong>Name:</strong> 
-    <span>{{ messageForm.controls.name.value }}</span>
-
-    <strong>Message:</strong> 
-    <span>{{ messageForm.controls.price.value }}</span>
-  </div>

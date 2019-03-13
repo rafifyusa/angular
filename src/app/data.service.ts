@@ -12,7 +12,19 @@ export class DataService {
     return console.log('clicked');
   }
 
-  getProducts(){
-    return this.http.get('http://localhost:8282/products/all')
+  getProducts() {
+    return this.http.get('http://localhost:8282/products/all');
+  }
+
+  insertProductIntoDB(data) {
+    return this.http.post('http://127.0.0.1:8282/products/create', data);
+  }
+
+  updateProductFromDB(data, id) {
+    return this.http.put('http://127.0.0.1:8282/products/' + id+ '/update', data );
+  }
+
+  findById(id) {
+    return this.http.get('http://127.0.0.1:8282/products/' + id);
   }
 }
