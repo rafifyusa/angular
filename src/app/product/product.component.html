@@ -1,0 +1,33 @@
+<h1>Product</h1>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="!messageForm.invalid">Your form is valid!</h5>
+
+    <label>
+      Product:
+      <input type="text" formControlName="product">
+      <div *ngIf="submitted && messageForm.controls.product.errors" class="error">
+        <div *ngIf="messageForm.controls.product.errors.required">Please insert product name!</div>
+      </div>
+    </label>
+  
+    <label>
+      Price:
+      <input type="number" formControlName="price">
+      <div *ngIf="submitted && messageForm.controls.price.errors" class="error">
+        <div *ngIf="messageForm.controls.price.errors.required">Please insert the product price!</div>
+      </div>
+    </label>
+
+    <input type="submit" value="Send message" class="cta">
+  
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong> 
+    <span>{{ messageForm.controls.product.value }}</span>
+
+    <strong>Message:</strong> 
+    <span>{{ messageForm.controls.price.value }}</span>
+  </div>
